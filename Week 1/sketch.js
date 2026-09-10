@@ -10,6 +10,8 @@ function draw() {
   text("Izzy Oerlemans",10,30)
 
   //vlag
+  textSize(20)
+  text("1. Vlag!",10,60)
   strokeWeight(0)
   fill(100,200,255)
   rect(10,70,335,35)
@@ -24,6 +26,8 @@ function draw() {
 
   //schaakbord
   strokeWeight(0)
+  fill(0,0,0)
+  text("2. Schaakbord!",200,300)
   fill(0,0,0)
   rect(10,255,60,60)
   rect(10,375,60,60)
@@ -44,12 +48,16 @@ function draw() {
 
   //huis
   strokeWeight(3)
+  fill(0,0,0)
+  text("3. Transparant huis!",10,470)
   noFill()
   rect(10,500,90,80)
   triangle(10,500,55,480,100,500)
 
   //stoplicht
   strokeWeight(0)
+  fill(0,0,0)
+  text("4. Stoplicht!",550,30)
   fill(120)
   rect(450,10,80,200)
   rect(470,180,40,80)
@@ -62,6 +70,8 @@ function draw() {
 
   //dobbelsteen
   strokeWeight(5)
+  fill(0,0,0)
+  text("5. Dobbelsteen!",620,320)
   fill(255,255,255)
   square(450,300,150,15)
   fill(0,0,0)
@@ -70,9 +80,11 @@ function draw() {
   circle(570,420,40,40)
 
   //mario!!
+  fill(0,0,0)
+  text("6. Mario!",620,520)
   //pet
   strokeWeight(0)
-  fill(255,0,0)
+  fill("red")
   square(500,500,10)
   square(510,500,10)
   square(520,500,10)
@@ -161,6 +173,8 @@ function draw() {
   //eindelijk...
 
   //kirby 16-bit
+  fill(0,0,0)
+  text("7. Kirby!",620,700)
   //outline
   fill(0,0,0)
   rect(500,670,60,10)
