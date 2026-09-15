@@ -1,12 +1,10 @@
-let circle_movement = 50;
-let circle_direction = 0.4
-
 
 function setup() {
   createCanvas(800, 600);
 }
 
 function draw() {
+  let wolken_move = 1
   //background
   background(100,200,255);
   //mountains
@@ -67,12 +65,20 @@ function draw() {
   circle(650,350,112)
   circle(770,350,112)
 
-  circle(circle_movement,350,112)
-
-  if (frameCount += 60) {
-  circle_direction = circle_direction * -1;
-  }
-
-  circle_movement += circle_direction;
+  //wolken
+  strokeWeight(0)
+  stroke(0)
+  fill(220)
+  ellipse(50 + wolken_move,50,100,50)
+  ellipse(80 + wolken_move,40,120,50)
+  ellipse(110 + wolken_move,60,120,50)
+  fill(255)
+  ellipse(50 + wolken_move,60,120,50)
+  ellipse(80 + wolken_move,50,120,50)
+  ellipse(110 + wolken_move,50,120,50)
   
+  wolken_move = wolken_move + 1
+  if (wolken_move = 870) {
+    wolken_move = 1
+  }
 }
