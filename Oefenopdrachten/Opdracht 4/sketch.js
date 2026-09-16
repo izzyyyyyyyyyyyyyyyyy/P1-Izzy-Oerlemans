@@ -7,7 +7,7 @@ let stoplicht_volgorde = 1;
 let eight_ball_x = 0;
 let eight_ball_y = 0;
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(700, 400);
 }
 
 function draw() {
@@ -43,6 +43,11 @@ function draw() {
   circle(400 + eight_ball_x,100 + eight_ball_y,60)
   fill(0)
   text("8",386 + eight_ball_x,116 + eight_ball_y)
+
+  fill(0)
+  textSize(12)
+  text("3. Druk op enter om van rood --> oranje --> groen te gaan.",10, 175);
+  text("4. Beweeg de eightball met WASD of de pijltjes.",400,40)
 
   cijfer = cijfer + 1
 
@@ -81,19 +86,19 @@ function draw() {
   }
 
   if (keyIsPressed === true) {
-    if (keyCode === 87) {
+    if (keyCode === 87 || keyCode === 38) {
       eight_ball_y -= 1
     }
 
-    if (keyCode === 83) {
+    if (keyCode === 83 || keyCode === 40) {
       eight_ball_y += 1
     }
 
-    if (keyCode === 65) {
+    if (keyCode === 65 || keyCode === 37) {
       eight_ball_x -= 1
     }
 
-    if (keyCode === 68) {
+    if (keyCode === 68 || keyCode === 39) {
       eight_ball_x += 1
     }
   }
