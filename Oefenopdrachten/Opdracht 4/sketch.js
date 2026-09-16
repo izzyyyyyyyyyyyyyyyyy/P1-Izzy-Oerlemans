@@ -23,7 +23,7 @@ function draw() {
   textSize(50)
   text(cijfer,10,160)
   fill(0,transparency_square);
-  rect(5,50,40,40);
+  rect(5,50,60,60);
   //stoplicht
   strokeWeight(2)
   fill(175)
@@ -51,10 +51,12 @@ function draw() {
 
   cijfer = cijfer + 1
 
+
+  //optellend cijfer
   if (cijfer > 500) {
     cijfer = 0
   }
-
+  //stoplicht scripts
   if (stoplicht_volgorde == 1) {
     red_light = 255
     orange_light = 160
@@ -85,6 +87,8 @@ function draw() {
     stoplicht_volgorde = 1
   }
 
+  //eightball controls scripts
+
   if (keyIsPressed === true) {
     if (keyCode === 87 || keyCode === 38) {
       eight_ball_y -= 1
@@ -101,6 +105,22 @@ function draw() {
     if (keyCode === 68 || keyCode === 39) {
       eight_ball_x += 1
     }
+  }
+  //eightball warping
+  if (eight_ball_x >= 360) {
+    eight_ball_x = -460;
+  }
+
+  if (eight_ball_x <= -460) {
+    eight_ball_x = 360
+  }
+
+  if (eight_ball_y >= 360) {
+    eight_ball_y = -160
+  }
+
+  if (eight_ball_y <= -160) {
+    eight_ball_y = 360
   }
 }
 
