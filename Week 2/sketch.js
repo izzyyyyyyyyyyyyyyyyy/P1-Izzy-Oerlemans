@@ -213,6 +213,4 @@ function draw() {
   
   //auto's
 
-
-
 }
