@@ -107,20 +107,21 @@ function draw() {
     }
   }
   //eightball warping
+
   if (eight_ball_x >= 360) {
-    eight_ball_x = -460;
+    eight_ball_x = -455
   }
 
   if (eight_ball_x <= -460) {
-    eight_ball_x = 360
+    eight_ball_x = 355
   }
 
   if (eight_ball_y >= 360) {
-    eight_ball_y = -160
+    eight_ball_y = -155
   }
 
   if (eight_ball_y <= -160) {
-    eight_ball_y = 360
+    eight_ball_y = 355
   }
 }
 
