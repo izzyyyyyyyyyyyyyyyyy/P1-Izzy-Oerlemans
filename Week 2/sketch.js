@@ -5,21 +5,21 @@ let wolken_move = 0
 let wolken_move2 = 200
 let wolken_move3 = 500
 let wolken_move4 = 800
-let zon_move = -820
-let sky_transition = 1;
-let maan_move = 0
+let zon_move = 0
+let sky_transition = 0;
+let maan_move = -820
 let wolken_kleur_dag1;
 let wolken_kleur_nacht1;
 let wolken_kleur_dag2;
 let wolken_kleur_nacht2;
 let wolken_kleur1;
 let wolken_kleur2;
-let wolken_transition = 1;
+let wolken_transition = 0;
 let nacht_darkness_trans = 0;
 let sterrenkleur1 = 255;
 let sterrenkleur2 = 200;
 let sterren_trans = 1;
-let sterren_opac = 255;
+let sterren_opac = 0;
 let red_light = 160;
 let orange_light = 160;
 let green_light = 160;
@@ -44,12 +44,16 @@ function setup() {
 }
 
 function draw() {
+  //lerpcolor definitions
   sky_color = lerpColor(from,to,0 + sky_transition);
   wolken_kleur1 = lerpColor(wolken_kleur_dag1,wolken_kleur_nacht1,0 + wolken_transition)
   wolken_kleur2 = lerpColor(wolken_kleur_dag2,wolken_kleur_nacht2,0 + wolken_transition)
+
+  //sky
   noStroke()
   fill(sky_color)
   rect(0,0,800,600)
+
   //zon
   drawingContext.shadowBlur = 80;
   drawingContext.shadowColor = color(252,104,133)
@@ -262,12 +266,14 @@ function draw() {
   fill(200)
   triangle(10,460,200,150,390,460)
   triangle(450,460,600,150,750,460)
+
   //grass
   strokeWeight(0)
   fill(0,100,0)
   rect(0,460,800,400)
   fill(0,170,0)
   rect(0,475,800,400)
+
   //road
   fill(110)
   rect(0,490,800,400)
@@ -282,6 +288,7 @@ function draw() {
   line(620,535,680,535)
   line(720,535,780,535)
   line(820,535,880,535)
+
   //trees
 
   //trunks
@@ -295,13 +302,8 @@ function draw() {
   rect(520,360,20,120)
   rect(640,360,20,120)
   rect(760,360,20,120)
-  //LEAVES
 
-  //layer1
-  fill(0,240,0)
-
-
-  //layer4
+  //leaves
   let color_dark_green = color(6,112,0)
   fill(color_dark_green)
   circle(50,350,112)
@@ -311,8 +313,6 @@ function draw() {
   circle(530,350,112)
   circle(650,350,112)
   circle(770,350,112)
-
-
 
   //wolken
   strokeWeight(0)
@@ -389,7 +389,7 @@ function draw() {
   fill(0,nacht_darkness_trans)
   rect(0,0,1000,1000)
 
-
+  //auto snelheid scripts en stoplicht scripts
   if (stoplicht_volgorde == 1) {
     red_light = 255;
     orange_light = 160;
@@ -414,6 +414,7 @@ function draw() {
     car_move2 += 3
   }
 
+  //car warping and color scripts
   if (car_move >= 830) {
     car_move = random(-800,-250)
     car_color1 = random(255)
@@ -426,14 +427,6 @@ function draw() {
     car2_color1 = random(255)
     car2_color2 = random(255)
     car2_color3 = random(255)
-  }
-
-  if (keyIsPressed === true) {
-    if (keyCode === 66) {
-      transparency_square = 255
-    }
-  } else {
-    transparency_square = 0
   }
 
   if (stoplicht_volgorde > 3) {
@@ -514,6 +507,7 @@ function draw() {
 
 }
 
+//stoplicht controls
 
 function keyPressed() {
   if (keyCode === 13) {

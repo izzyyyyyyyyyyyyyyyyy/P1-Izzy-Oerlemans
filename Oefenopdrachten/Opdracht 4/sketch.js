@@ -57,35 +57,7 @@ function draw() {
     cijfer = 0
   }
   //stoplicht scripts
-  if (stoplicht_volgorde == 1) {
-    red_light = 255
-    orange_light = 160
-    green_light = 160
-  }
 
-  if (stoplicht_volgorde == 2) {
-    red_light = 160
-    orange_light = 255
-    green_light = 160
-  }
-
-  if (stoplicht_volgorde == 3) {
-    red_light = 160
-    orange_light = 160
-    green_light = 255
-  }
-
-  if (keyIsPressed === true) {
-    if (keyCode === 66) {
-      transparency_square = 255
-    }
-  } else {
-    transparency_square = 0
-  }
-
-  if (stoplicht_volgorde > 3) {
-    stoplicht_volgorde = 1
-  }
 
   //eightball controls scripts
 
