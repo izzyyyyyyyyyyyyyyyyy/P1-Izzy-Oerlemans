@@ -18,8 +18,20 @@ let wolken_transition = 1;
 let nacht_darkness_trans = 0;
 let sterrenkleur1 = 255;
 let sterrenkleur2 = 200;
-let sterren_trans = 1
-let sterren_opac = 255
+let sterren_trans = 1;
+let sterren_opac = 255;
+let red_light = 160;
+let orange_light = 160;
+let green_light = 160;
+let stoplicht_volgorde = 1;
+let car_move = 0;
+let car_move2 = 0;
+let car_color1 = 0;
+let car_color2 = 0;
+let car_color3 = 0;
+let car2_color1 = 0;
+let car2_color2 = 0;
+let car2_color3 = 0;
 
 function setup() {
   createCanvas(800, 600);
@@ -146,6 +158,82 @@ function draw() {
   line(335,55,335,75)
   line(325,65,345,65)
 
+  stroke(sterrenkleur1,sterren_opac)
+  line(300,30,310,40)
+  line(300,40,310,30)
+  stroke(sterrenkleur2,sterren_opac)
+  line(305,25,305,45)
+  line(295,35,315,35)
+
+  stroke(sterrenkleur1,sterren_opac)
+  line(400,30,410,40)
+  line(400,40,410,30)
+  stroke(sterrenkleur2,sterren_opac)
+  line(405,25,405,45)
+  line(395,35,415,35)
+
+  stroke(sterrenkleur1,sterren_opac)
+  line(500,130,510,140)
+  line(500,140,510,130)
+  stroke(sterrenkleur2,sterren_opac)
+  line(505,125,505,145)
+  line(495,135,515,135)
+
+  stroke(sterrenkleur1,sterren_opac)
+  line(500,20,510,30)
+  line(500,30,510,20)
+  stroke(sterrenkleur2,sterren_opac)
+  line(505,15,505,35)
+  line(495,25,515,25)
+
+  stroke(sterrenkleur1,sterren_opac)
+  line(580,80,590,90)
+  line(580,90,590,80)
+  stroke(sterrenkleur2,sterren_opac)
+  line(585,75,585,95)
+  line(575,85,595,85)
+
+  stroke(sterrenkleur1,sterren_opac)
+  line(680,190,690,200)
+  line(680,200,690,190)
+  stroke(sterrenkleur2,sterren_opac)
+  line(685,185,685,205)
+  line(675,195,695,195)
+
+  stroke(sterrenkleur1,sterren_opac)
+  line(630,0,640,10)
+  line(630,10,640,0)
+  stroke(sterrenkleur2,sterren_opac)
+  line(635,-5,635,15)
+  line(625,5,645,5)
+
+  stroke(sterrenkleur1,sterren_opac)
+  line(730,100,740,110)
+  line(730,110,740,100)
+  stroke(sterrenkleur2,sterren_opac)
+  line(735,95,735,115)
+  line(725,105,745,105)
+
+  stroke(sterrenkleur1,sterren_opac)
+  line(670,120,680,130)
+  line(670,130,680,120)
+  stroke(sterrenkleur2,sterren_opac)
+  line(675,115,675,135)
+  line(665,125,685,125)
+
+  stroke(sterrenkleur1,sterren_opac)
+  line(760,20,770,30)
+  line(760,30,770,20)
+  stroke(sterrenkleur2,sterren_opac)
+  line(765,15,765,35)
+  line(755,25,775,25)
+
+  stroke(sterrenkleur1,sterren_opac)
+  line(760,220,770,230)
+  line(760,230,770,220)
+  stroke(sterrenkleur2,sterren_opac)
+  line(765,215,765,235)
+  line(755,225,775,225)
 
   if (frameCount % 20 === 0) {
     sterren_trans += 1
@@ -265,10 +353,94 @@ function draw() {
   ellipse(-120 + wolken_move4,80,120,50)
   ellipse(-80 + wolken_move4,80,120,50)
 
+  //stoplicht
+  strokeWeight(2)
+  fill(120)
+  rect(600,365,30,80)
+  rect(607.5,445,15,40)
+  fill(red_light,0,0)
+  strokeWeight(1)
+  circle(615,380,25)
+  fill(0,green_light,0)
+  circle(615,430,25)
+  fill(orange_light,100,0)
+  circle(615,405,25)
+
+  //auto's
+
+  fill(car_color1,car_color2,car_color3)
+  rect(100 + car_move,460,120,40)
+  rect(130 + car_move,420,60,40)
+  fill(0,200,255)
+  rect(145 + car_move,425,40,35)
+  fill(0)
+  circle(120 + car_move,500,40)
+  circle(200 + car_move,500,40)
+
+  fill(car2_color1,car2_color2,car2_color3)
+  rect(300 + car_move2,460,120,40)
+  rect(330 + car_move2,420,60,40)
+  fill(0,200,255)
+  rect(345 + car_move2,425,40,35)
+  fill(0)
+  circle(320 + car_move2,500,40)
+  circle(400 + car_move2,500,40)
+
   fill(0,nacht_darkness_trans)
   rect(0,0,1000,1000)
 
-  //nacht shade
+
+  if (stoplicht_volgorde == 1) {
+    red_light = 255;
+    orange_light = 160;
+    green_light = 160;
+    car_move += 0;
+    car_move2 += 0;
+  }
+
+  if (stoplicht_volgorde == 2) {
+    red_light = 160
+    orange_light = 255
+    green_light = 160
+    car_move += 1
+    car_move2 += 1.2
+  }
+
+  if (stoplicht_volgorde == 3) {
+    red_light = 160
+    orange_light = 160
+    green_light = 255
+    car_move += 2
+    car_move2 += 3
+  }
+
+  if (car_move >= 830) {
+    car_move = random(-800,-250)
+    car_color1 = random(255)
+    car_color2 = random(255)
+    car_color3 = random(255)
+  }
+
+  if (car_move2 >= 530) {
+    car_move2 = random(-1200,-550)
+    car2_color1 = random(255)
+    car2_color2 = random(255)
+    car2_color3 = random(255)
+  }
+
+  if (keyIsPressed === true) {
+    if (keyCode === 66) {
+      transparency_square = 255
+    }
+  } else {
+    transparency_square = 0
+  }
+
+  if (stoplicht_volgorde > 3) {
+    stoplicht_volgorde = 1
+  }
+
+  //nacht shade en sterren transitie
 
   if (zon_move < -50) {
     nacht_darkness_trans += 1
@@ -296,24 +468,24 @@ function draw() {
 
   //beweging wolken
 
-  wolken_move = wolken_move + 0.5
-  if (wolken_move >= 1100) {
-    wolken_move = 1
+  wolken_move = wolken_move + -0.5
+  if (wolken_move <= 1) {
+    wolken_move = 1100
   }
 
-  wolken_move2 = wolken_move2 + 0.5
-  if (wolken_move2 >= 1100) {
-    wolken_move2 = 1
+  wolken_move2 = wolken_move2 + -0.5
+  if (wolken_move2 <= 1) {
+    wolken_move2 = 1100
   }
 
-  wolken_move3 = wolken_move3 + 0.5
-  if (wolken_move3 >= 1100) {
-    wolken_move3 = 1
+  wolken_move3 = wolken_move3 + -0.5
+  if (wolken_move3 <= 1) {
+    wolken_move3 = 1100
   }
 
-  wolken_move4 = wolken_move4 + 0.5
-  if (wolken_move4 >= 1100) {
-    wolken_move4 = 1
+  wolken_move4 = wolken_move4 + -0.5
+  if (wolken_move4 <= 1) {
+    wolken_move4 = 1100
   }
 
   //beweging maan
@@ -340,7 +512,11 @@ function draw() {
     wolken_transition = wolken_transition - 0.01
   }
 
+}
 
-  //auto's
 
+function keyPressed() {
+  if (keyCode === 13) {
+    stoplicht_volgorde += 1
+  }
 }
