@@ -41,6 +41,12 @@ function setup() {
   wolken_kleur_nacht1 = color(150)
   wolken_kleur_dag2 = color(225)
   wolken_kleur_nacht2 = color(120)
+  car_color1 = random(255)
+  car_color2 = random(255)
+  car_color3 = random(255)
+  car2_color1 = random(255)
+  car2_color2 = random(255)
+  car2_color3 = random(255)
 }
 
 function draw() {
