@@ -1,14 +1,27 @@
 let vakje1;
+let vakje1_state = 1;
 let vakje2;
+let vakje2_state = 1;
 let vakje3;
+let vakje3_state = 1;
 let vakje4;
+let vakje4_state = 1;
 let vakje5;
+let vakje5_state = 1;
 let vakje6;
+let vakje6_state = 1;
 let vakje7;
+let vakje7_state = 1;
 let vakje8;
+let vakje8_state = 1;
 let vakje9;
-let turn = 1;
+let vakje9_state = 1;
 let background_color;
+let turn = 1;
+let play_button_opac = 0;
+let endscreen_text;
+let game_start = true;
+
 
 function setup() {
   createCanvas(1020, 840);
@@ -26,11 +39,8 @@ function setup() {
 
 function draw() {
   background(background_color);
-
   fill(0)
-  textSize(25)
-  text(mouseX,10,40)
-  text(mouseY,10,80)
+  strokeWeight(0)
   
   square(200,100,620,40)
   fill(vakje1)
@@ -52,65 +62,22 @@ function draw() {
   fill(vakje9)
   square(620,520,180)
 
-  if (mouseX >= 220 && mouseX <= 400 && mouseY >= 120 && mouseY <= 300) {
-    vakje1 = color(200)
-  } else {
-    vakje1 = color(230)
-  }
+  fill(200,play_button_opac)
+  strokeWeight(4)
+  stroke(0,play_button_opac)
+  rect(360,500,300,150)
+  fill(0,play_button_opac)
+  textSize(50)
+  strokeWeight(0)
+  text("play again",400,590)
+  textSize(100)
+  fill(255,play_button_opac)
+  strokeWeight(10)
+  text(endscreen_text + "wins!",300,400)
 
-  if (mouseX >= 420 && mouseX <= 600 && mouseY >= 120 && mouseY <= 300) {
-    vakje2 = color(200)
-  } else {
-    vakje2 = color(230)
-  }
 
-  if (mouseX >= 620 && mouseX <= 800 && mouseY >= 120 && mouseY <= 300) {
-    vakje3 = color(200)
-  } else {
-    vakje3 = color(230)
-  }
-
-  if (mouseX >= 220 && mouseX <= 400 && mouseY >= 320 && mouseY <= 500) {
-    vakje4 = color(200)
-  } else {
-    vakje4 = color(230)
-  }
-
-  if (mouseX >= 420 && mouseX <= 600 && mouseY >= 320 && mouseY <= 500) {
-    vakje5 = color(200)
-  } else {
-    vakje5 = color(230)
-  }
-
-  if (mouseX >= 620 && mouseX <= 800 && mouseY >= 320 && mouseY <= 500) {
-    vakje6 = color(200)
-  } else {
-    vakje6 = color(230)
-  }
-
-  if (mouseX >= 220 && mouseX <= 400 && mouseY >= 520 && mouseY <= 700) {
-    vakje7 = color(200)
-  } else {
-    vakje7 = color(230)
-  }
-
-  if (mouseX >= 420 && mouseX <= 600 && mouseY >= 520 && mouseY <= 700) {
-    vakje8 = color(200)
-  } else {
-    vakje8 = color(230)
-  }
-
-  if (mouseX >= 620 && mouseX <= 800 && mouseY >= 520 && mouseY <= 700) {
-    if (mouseIsPressed === true) {
-      if (mouseButton.left) {
-        vakje9 = color(255,0,0)
-      }
-    } else {
-      vakje9 = color(200)
-    }
-      
-  } else {
-    vakje9 = color(230)
+  if (turn > 2) {
+    turn = 1
   }
 
   if (turn == 1) {
@@ -118,6 +85,504 @@ function draw() {
   } else {
     background_color = color(0,0,255)
   }
+
+  //vakje 1
+
+  if (mouseX >= 220 && mouseX <= 400 && mouseY >= 120 && mouseY <= 300) {
+    if (vakje1_state == 1) {
+      vakje1_state = 2
+    }
+  } else if (vakje1_state !== 3 && vakje1_state !== 4) {
+    vakje1_state = 1
+  }
+
+
+  if (vakje1_state == 1) {
+    vakje1 = color(255)
+  }
+
+  if (vakje1_state == 2) {
+    vakje1 = color(230)
+  }
+
+  if (vakje1_state == 3) {
+    vakje1 = color(235,0,0)
+  }
+
+  if (vakje1_state == 4) {
+    vakje1 = color(0,0,235)
+  }
+
+  //vakje 2
+
+  if (mouseX >= 420 && mouseX <= 600 && mouseY >= 120 && mouseY <= 300) {
+    if (vakje2_state == 1) {
+      vakje2_state = 2
+    }
+  } else if (vakje2_state !== 3 && vakje2_state !== 4) {
+    vakje2_state = 1
+  }
+
+  if (vakje2_state == 1) {
+    vakje2 = color(255)
+  }
+
+  if (vakje2_state == 2) {
+    vakje2 = color(230)
+  }
+
+  if (vakje2_state == 3) {
+    vakje2 = color(235,0,0)
+  }
+
+  if (vakje2_state == 4) {
+    vakje2 = color(0,0,235)
+  }
+
+  //vakje 3
+
+  if (mouseX >= 620 && mouseX <= 800 && mouseY >= 120 && mouseY <= 300) {
+    if (vakje3_state == 1) {
+      vakje3_state = 2
+    }
+  } else if (vakje3_state !== 3 && vakje3_state !== 4) {
+    vakje3_state = 1
+  }
+
+  if (vakje3_state == 1) {
+    vakje3 = color(255)
+  }
+
+  if (vakje3_state == 2) {
+    vakje3 = color(230)
+  }
+
+  if (vakje3_state == 3) {
+    vakje3 = color(235,0,0)
+  }
+
+  if (vakje3_state == 4) {
+    vakje3 = color(0,0,235)
+  }
+
+  //vakje 4
+
+  if (mouseX >= 220 && mouseX <= 400 && mouseY >= 320 && mouseY <= 500) {
+    if (vakje4_state == 1) {
+      vakje4_state = 2
+    }
+  } else if (vakje4_state !== 3 && vakje4_state !== 4) {
+    vakje4_state = 1
+  }
+
+  if (vakje4_state == 1) {
+    vakje4 = color(255)
+  }
+
+  if (vakje4_state == 2) {
+    vakje4 = color(230)
+  }
+
+  if (vakje4_state == 3) {
+    vakje4 = color(235,0,0)
+  }
+
+  if (vakje4_state == 4) {
+    vakje4 = color(0,0,235)
+  }
+
+  //vakje 5
+
+  if (mouseX >= 420 && mouseX <= 600 && mouseY >= 320 && mouseY <= 500) {
+    if (vakje5_state == 1) {
+      vakje5_state = 2
+    }
+  } else if (vakje5_state !== 3 && vakje5_state !== 4) {
+    vakje5_state = 1
+  }
+
+  if (vakje5_state == 1) {
+    vakje5 = color(255)
+  }
+
+  if (vakje5_state == 2) {
+    vakje5 = color(230)
+  }
+
+  if (vakje5_state == 3) {
+    vakje5 = color(235,0,0)
+  }
+
+  if (vakje5_state == 4) {
+    vakje5 = color(0,0,235)
+  }
+
+  //vakje 6
+
+  if (mouseX >= 620 && mouseX <= 800 && mouseY >= 320 && mouseY <= 500) {
+    if (vakje6_state == 1) {
+      vakje6_state = 2
+    }
+  } else if (vakje6_state !== 3 && vakje6_state !== 4) {
+    vakje6_state = 1
+  }
+
+  if (vakje6_state == 1) {
+    vakje6 = color(255)
+  }
+
+  if (vakje6_state == 2) {
+    vakje6 = color(230)
+  }
+
+  if (vakje6_state == 3) {
+    vakje6 = color(235,0,0)
+  }
+
+  if (vakje6_state == 4) {
+    vakje6 = color(0,0,235)
+  }
+
+  //vakje 7
+
+  if (mouseX >= 220 && mouseX <= 400 && mouseY >= 520 && mouseY <= 700) {
+    if (vakje7_state == 1) {
+      vakje7_state = 2
+    }
+  } else if (vakje7_state !== 3 && vakje7_state !== 4) {
+    vakje7_state = 1
+  }
+
+  if (vakje7_state == 1) {
+    vakje7 = color(255)
+  }
+
+  if (vakje7_state == 2) {
+    vakje7 = color(230)
+  }
+
+  if (vakje7_state == 3) {
+    vakje7 = color(235,0,0)
+  }
+
+  if (vakje7_state == 4) {
+    vakje7 = color(0,0,235)
+  }
+
+  //vakje 8
+
+  if (mouseX >= 420 && mouseX <= 600 && mouseY >= 520 && mouseY <= 700) {
+    if (vakje8_state == 1) {
+      vakje8_state = 2
+    }
+  } else if (vakje8_state !== 3 && vakje8_state !== 4) {
+    vakje8_state = 1
+  }
+
+  if (vakje8_state == 1) {
+    vakje8 = color(255)
+  }
+
+  if (vakje8_state == 2) {
+    vakje8 = color(230)
+  }
+
+  if (vakje8_state == 3) {
+    vakje8 = color(235,0,0)
+  }
+
+  if (vakje8_state == 4) {
+    vakje8 = color(0,0,235)
+  }
+
+  //vakje 9
+
+  if (mouseX >= 620 && mouseX <= 800 && mouseY >= 520 && mouseY <= 700) {
+    if (vakje9_state == 1) {
+      vakje9_state = 2
+    }
+  } else if (vakje9_state !== 3 && vakje9_state !== 4) {
+    vakje9_state = 1
+  }
+
+  if (vakje9_state == 1) {
+    vakje9 = color(255)
+  }
+
+  if (vakje9_state == 2) {
+    vakje9 = color(230)
+  }
+
+  if (vakje9_state == 3) {
+    vakje9 = color(235,0,0)
+  }
+
+  if (vakje9_state == 4) {
+    vakje9 = color(0,0,235)
+  }
+
+  //endscreen
+  if (vakje1_state == 3 && vakje2_state == 3 && vakje3_state == 3) {
+    play_button_opac = 255
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje4_state == 3 && vakje5_state == 3 && vakje6_state == 3) {
+    play_button_opac = 255
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje7_state == 3 && vakje8_state == 3 && vakje9_state == 3) {
+    play_button_opac = 255
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje1_state == 3 && vakje4_state == 3 && vakje7_state == 3) {
+    play_button_opac = 255
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje1_state == 3 && vakje5_state == 3 && vakje9_state == 3) {
+    play_button_opac = 255
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje3_state == 3 && vakje5_state == 3 && vakje7_state == 3) {
+    play_button_opac = 255
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje2_state == 3 && vakje5_state == 3 && vakje8_state == 3) {
+    play_button_opac = 255
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje3_state == 3 && vakje6_state == 3 && vakje9_state == 3) {
+    play_button_opac = 255
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+
+  if (vakje1_state == 4 && vakje2_state == 4 && vakje3_state == 4) {
+    play_button_opac = 255
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje4_state == 4 && vakje5_state == 4 && vakje6_state == 4) {
+    play_button_opac = 255
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje7_state == 4 && vakje8_state == 4 && vakje9_state == 4) {
+    play_button_opac = 255
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje1_state == 4 && vakje4_state == 4 && vakje7_state == 4) {
+    play_button_opac = 255
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje1_state == 4 && vakje5_state == 4 && vakje9_state == 4) {
+    play_button_opac = 255
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje3_state == 4 && vakje5_state == 4 && vakje7_state == 4) {
+    play_button_opac = 255
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje2_state == 4 && vakje5_state == 4 && vakje8_state == 4) {
+    play_button_opac = 255
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje3_state == 4 && vakje6_state == 4 && vakje9_state == 4) {
+    play_button_opac = 255
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje1_state !== 1 && vakje2_state !== 1 && vakje3_state !== 1 && vakje4_state !== 1 && vakje5_state !== 1 && vakje6_state !== 1 && vakje7_state !== 1 && vakje8_state !== 1 && vakje9_state !== 1 && vakje1_state !== 2 && vakje2_state !== 2 && vakje3_state !== 2 && vakje4_state !== 2 && vakje5_state !== 2 && vakje6_state !== 2 && vakje7_state !== 2 && vakje8_state !== 2 && vakje9_state !== 2 && game_start == true) {
+    play_button_opac = 255
+    endscreen_text = "Nobody "
+    game_start = false
+  }
+
 }
 
+function mouseClicked() {
 
+  if (game_start == true) {
+    if (mouseButton === LEFT) {
+
+      //vakje 1
+      if (mouseX >= 220 && mouseX <= 400 && mouseY >= 120 && mouseY <= 300) {
+        if (turn == 1) {
+          if (vakje1_state !== 4 && vakje1_state !== 3) {
+            vakje1_state = 3
+            turn += 1
+          }
+        } else {
+          if (vakje1_state !== 4 && vakje1_state !== 3) {
+            vakje1_state = 4
+            turn += 1
+          }
+        }
+      }
+
+      //vakje 2
+      if (mouseX >= 420 && mouseX <= 600 && mouseY >= 120 && mouseY <= 300) {
+        if (turn == 1) {
+          if (vakje2_state !== 4 && vakje2_state !== 3) {
+            vakje2_state = 3
+            turn += 1
+          }
+        } else {
+          if (vakje2_state !== 4 && vakje2_state !== 3) {
+            vakje2_state = 4
+            turn += 1
+          }
+        }
+      }
+
+      //vakje 3
+      if (mouseX >= 620 && mouseX <= 800 && mouseY >= 120 && mouseY <= 300) {
+        if (turn == 1) {
+          if (vakje3_state !== 4 && vakje3_state !== 3) {
+            vakje3_state = 3
+            turn += 1
+          }
+        } else {
+          if (vakje3_state !== 4 && vakje3_state !== 3) {
+            vakje3_state = 4
+            turn += 1
+          }
+        }
+      }
+
+      //vakje 4
+      if (mouseX >= 220 && mouseX <= 400 && mouseY >= 320 && mouseY <= 500) {
+        if (turn == 1) {
+          if (vakje4_state !== 4 && vakje4_state !== 3) {
+            vakje4_state = 3
+            turn += 1
+          }
+        } else {
+          if (vakje4_state !== 4 && vakje4_state !== 3) {
+            vakje4_state = 4
+            turn += 1
+          }
+        }
+      }
+
+      //vakje 5
+      if (mouseX >= 420 && mouseX <= 600 && mouseY >= 320 && mouseY <= 500) {
+        if (turn == 1) {
+          if (vakje5_state !== 4 && vakje5_state !== 3) {
+            vakje5_state = 3
+            turn += 1
+          }
+        } else {
+          if (vakje5_state !== 4 && vakje5_state !== 3) {
+            vakje5_state = 4
+            turn += 1
+          }
+        }
+      }
+
+      //vakje 6
+      if (mouseX >= 620 && mouseX <= 800 && mouseY >= 320 && mouseY <= 500) {
+        if (turn == 1) {
+          if (vakje6_state !== 4 && vakje6_state !== 3) {
+            vakje6_state = 3
+            turn += 1
+          }
+        } else {
+          if (vakje6_state !== 4 && vakje6_state !== 3) {
+            vakje6_state = 4
+            turn += 1
+          }
+        }
+      }
+
+      //vakje 7
+      if (mouseX >= 220 && mouseX <= 400 && mouseY >= 520 && mouseY <= 700) {
+        if (turn == 1) {
+          if (vakje7_state !== 4 && vakje7_state !== 3) {
+            vakje7_state = 3
+            turn += 1
+          }
+        } else {
+          if (vakje7_state !== 4 && vakje7_state !== 3) {
+            vakje7_state = 4
+            turn += 1
+          }
+        }
+      }
+
+      //vakje 8
+      if (mouseX >= 420 && mouseX <= 600 && mouseY >= 520 && mouseY <= 700) {
+        if (turn == 1) {
+          if (vakje8_state !== 4 && vakje8_state !== 3) {
+            vakje8_state = 3
+            turn += 1
+          }
+        } else {
+          if (vakje8_state !== 4 && vakje8_state !== 3) {
+            vakje8_state = 4
+            turn += 1
+          }
+        }
+      }
+
+      //vakje 9
+      if (mouseX >= 620 && mouseX <= 800 && mouseY >= 520 && mouseY <= 700) {
+        if (turn == 1) {
+          if (vakje9_state !== 4 && vakje9_state !== 3) {
+            vakje9_state = 3
+            turn += 1
+          }
+        } else {
+          if (vakje9_state !== 4 && vakje9_state !== 3) {
+            vakje9_state = 4
+            turn += 1
+          }
+        }
+      }
+    }
+  }
+  
+  if (game_start == false && mouseX >= 360 && mouseX <= 660 && mouseY >= 500 && mouseY <= 650) {
+    if (mouseButton === LEFT) {
+      turn = 1
+      play_button_opac = 0
+      vakje1_state = 1
+      vakje2_state = 1
+      vakje3_state = 1
+      vakje4_state = 1
+      vakje5_state = 1
+      vakje6_state = 1
+      vakje7_state = 1
+      vakje8_state = 1
+      vakje9_state = 1
+      game_start = true
+    }
+  }
+}
