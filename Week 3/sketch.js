@@ -22,7 +22,9 @@ let play_button_opac = 0;
 let endscreen_text;
 let game_start = true;
 let offset = 0;
-
+let from;
+let to;
+let background_transition = 0;
 
 function setup() {
   createCanvas(1020, 840);
@@ -35,10 +37,13 @@ function setup() {
   vakje7 = color(230);
   vakje8 = color(230);
   vakje9 = color(230);
-  background_color = color(255,0,0)
 }
 
 function draw() {
+  from = color(255,0,0)
+  to = color(0,0,255)
+
+  background_color = lerpColor(from,to,0 + background_transition)
   background(background_color);
   fill(0)
   strokeWeight(0)
@@ -205,10 +210,18 @@ function draw() {
     turn = 1
   }
 
+  if (background_transition > 1) {
+    background_transition = 1
+  }
+
+  if (background_transition < 0) {
+    background_transition = 0
+  }
+
   if (turn == 1) {
-    background_color = color(255,0,0)
+    background_transition -= 0.1
   } else {
-    background_color = color(0,0,255)
+    background_transition += 0.1
   }
 
   //vakje 1
