@@ -25,6 +25,8 @@ let offset = 0;
 let from;
 let to;
 let background_transition = 0;
+let text_rainbow;
+let text_trans;
 
 function setup() {
   createCanvas(1020, 840);
@@ -37,14 +39,31 @@ function setup() {
   vakje7 = color(230);
   vakje8 = color(230);
   vakje9 = color(230);
+  text_trans = 0;
 }
 
 function draw() {
+  //bg color transition setup
   from = color(255,0,0)
   to = color(0,0,255)
-
   background_color = lerpColor(from,to,0 + background_transition)
+  colorMode(RGB)
   background(background_color);
+  //rainbow text functionality
+  colorMode(HSB)
+  text_rainbow = color(text_trans,100,100)
+  text_trans += 1
+
+  if (text_trans > 360) {
+    text_trans = 0
+  }
+  //board visuals
+  stroke(255)
+  strokeWeight(2)
+  textSize(75)
+  fill(text_rainbow)
+  text("Drie op een rij!",265,75)
+  colorMode(RGB)
   fill(0)
   strokeWeight(0)
   square(200,100,620,40)
@@ -66,15 +85,12 @@ function draw() {
   square(420,520,180)
   fill(vakje9)
   square(620,520,180)
-  textSize(75)
-  stroke(0)
-  strokeWeight(5)
-  text("Drie op een rij!",260,70)
+
 
   //endscreen
   strokeWeight(25)
   stroke(255)
-
+  //(hij checkt elke speciefieke combinatie van vakjes)
   if (vakje1_state == 3 && vakje2_state == 3 && vakje3_state == 3) {
     play_button_opac = 255
     line(310,210,710,210)
@@ -187,6 +203,7 @@ function draw() {
     game_start = false;
   }
 
+  //als alle vakje gevult zijn en er geen drie op een rij gedetecteerd word is het gelijk spel
   if (vakje1_state !== 1 && vakje2_state !== 1 && vakje3_state !== 1 && vakje4_state !== 1 && vakje5_state !== 1 && vakje6_state !== 1 && vakje7_state !== 1 && vakje8_state !== 1 && vakje9_state !== 1 && vakje1_state !== 2 && vakje2_state !== 2 && vakje3_state !== 2 && vakje4_state !== 2 && vakje5_state !== 2 && vakje6_state !== 2 && vakje7_state !== 2 && vakje8_state !== 2 && vakje9_state !== 2 && game_start == true) {
     play_button_opac = 255
     endscreen_text = "Nobody "
@@ -194,8 +211,8 @@ function draw() {
     offset = 65
   }
 
-
-  fill(200,play_button_opac)
+  //endscreen viuals
+  fill(200,play_button_opac) //-- "playbutton opac" controleerd wanneer de knoppen zichtbaar zijn
   strokeWeight(4)
   stroke(0,play_button_opac)
   rect(360,500,300,150)
@@ -208,11 +225,12 @@ function draw() {
   strokeWeight(10)
   text(endscreen_text + "wins!",300 - offset,400)
 
-
+  //turns cyclen tussen 1 en 2
   if (turn > 2) {
     turn = 1
   }
 
+  //background transition code
   if (background_transition > 1) {
     background_transition = 1
   }
@@ -228,7 +246,7 @@ function draw() {
   }
 
   //vakje 1
-
+  //code om het vakje grijs te maken wanneer de muis er over heen zit
   if (mouseX >= 220 && mouseX <= 400 && mouseY >= 120 && mouseY <= 300) {
     if (vakje1_state == 1) {
       vakje1_state = 2
@@ -237,7 +255,7 @@ function draw() {
     vakje1_state = 1
   }
 
-
+  //states van het vakje (kleur)
   if (vakje1_state == 1) {
     vakje1 = color(255)
   }
@@ -254,7 +272,7 @@ function draw() {
     vakje1 = color(0,0,235)
   }
 
-  //vakje 2
+  //vakje 2 (alle vakjes werken precies hetzelfde als vakje 1)
 
   if (mouseX >= 420 && mouseX <= 600 && mouseY >= 120 && mouseY <= 300) {
     if (vakje2_state == 1) {
@@ -463,9 +481,10 @@ function draw() {
   }
 }
 
+//muis input voor de verandering van de kleur
 function mouseClicked() {
 
-  if (game_start == true) {
+  if (game_start == true) { //<-- zorgt ervoor dat de game niet meer werkt als de endscreen er is
     if (mouseButton === LEFT) {
 
       //vakje 1
@@ -605,6 +624,7 @@ function mouseClicked() {
     }
   }
   
+  //game reset
   if (game_start == false && mouseX >= 360 && mouseX <= 660 && mouseY >= 500 && mouseY <= 650) {
     if (mouseButton === LEFT) {
       turn = 1
