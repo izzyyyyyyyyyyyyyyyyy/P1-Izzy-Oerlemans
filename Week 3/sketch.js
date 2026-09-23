@@ -62,6 +62,129 @@ function draw() {
   fill(vakje9)
   square(620,520,180)
 
+  //endscreen
+  strokeWeight(25)
+  stroke(255)
+
+  if (vakje1_state == 3 && vakje2_state == 3 && vakje3_state == 3) {
+    play_button_opac = 255
+    line(310,210,710,210)
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje4_state == 3 && vakje5_state == 3 && vakje6_state == 3) {
+    play_button_opac = 255
+    line(310,410,710,410)
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje7_state == 3 && vakje8_state == 3 && vakje9_state == 3) {
+    play_button_opac = 255
+    line(310,610,710,610)
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje1_state == 3 && vakje4_state == 3 && vakje7_state == 3) {
+    play_button_opac = 255
+    line(310,210,310,610)
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje1_state == 3 && vakje5_state == 3 && vakje9_state == 3) {
+    play_button_opac = 255
+    line(310,210,710,610)
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje3_state == 3 && vakje5_state == 3 && vakje7_state == 3) {
+    play_button_opac = 255
+    line(710,210,310,610)
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje2_state == 3 && vakje5_state == 3 && vakje8_state == 3) {
+    play_button_opac = 255
+    line(510,210,510,610)
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+  if (vakje3_state == 3 && vakje6_state == 3 && vakje9_state == 3) {
+    play_button_opac = 255
+    line(710,210,710,610)
+    endscreen_text =  "Red "
+    game_start = false;
+  }
+
+
+  if (vakje1_state == 4 && vakje2_state == 4 && vakje3_state == 4) {
+    play_button_opac = 255
+    line(310,210,710,210)
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje4_state == 4 && vakje5_state == 4 && vakje6_state == 4) {
+    play_button_opac = 255
+    line(310,410,710,410)
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje7_state == 4 && vakje8_state == 4 && vakje9_state == 4) {
+    play_button_opac = 255
+    line(310,610,710,610)
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje1_state == 4 && vakje4_state == 4 && vakje7_state == 4) {
+    play_button_opac = 255
+    line(310,210,310,610)
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje1_state == 4 && vakje5_state == 4 && vakje9_state == 4) {
+    play_button_opac = 255
+    line(310,210,710,610)
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje3_state == 4 && vakje5_state == 4 && vakje7_state == 4) {
+    play_button_opac = 255
+    line(710,210,710,610)
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje2_state == 4 && vakje5_state == 4 && vakje8_state == 4) {
+    play_button_opac = 255
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje3_state == 4 && vakje6_state == 4 && vakje9_state == 4) {
+    play_button_opac = 255
+    line(510,210,510,610)
+    endscreen_text =  "Blue "
+    game_start = false;
+  }
+
+  if (vakje1_state !== 1 && vakje2_state !== 1 && vakje3_state !== 1 && vakje4_state !== 1 && vakje5_state !== 1 && vakje6_state !== 1 && vakje7_state !== 1 && vakje8_state !== 1 && vakje9_state !== 1 && vakje1_state !== 2 && vakje2_state !== 2 && vakje3_state !== 2 && vakje4_state !== 2 && vakje5_state !== 2 && vakje6_state !== 2 && vakje7_state !== 2 && vakje8_state !== 2 && vakje9_state !== 2 && game_start == true) {
+    play_button_opac = 255
+    endscreen_text = "Nobody "
+    game_start = false
+  }
+
+
   fill(200,play_button_opac)
   strokeWeight(4)
   stroke(0,play_button_opac)
@@ -320,111 +443,6 @@ function draw() {
   if (vakje9_state == 4) {
     vakje9 = color(0,0,235)
   }
-
-  //endscreen
-  if (vakje1_state == 3 && vakje2_state == 3 && vakje3_state == 3) {
-    play_button_opac = 255
-    endscreen_text =  "Red "
-    game_start = false;
-  }
-
-  if (vakje4_state == 3 && vakje5_state == 3 && vakje6_state == 3) {
-    play_button_opac = 255
-    endscreen_text =  "Red "
-    game_start = false;
-  }
-
-  if (vakje7_state == 3 && vakje8_state == 3 && vakje9_state == 3) {
-    play_button_opac = 255
-    endscreen_text =  "Red "
-    game_start = false;
-  }
-
-  if (vakje1_state == 3 && vakje4_state == 3 && vakje7_state == 3) {
-    play_button_opac = 255
-    endscreen_text =  "Red "
-    game_start = false;
-  }
-
-  if (vakje1_state == 3 && vakje5_state == 3 && vakje9_state == 3) {
-    play_button_opac = 255
-    endscreen_text =  "Red "
-    game_start = false;
-  }
-
-  if (vakje3_state == 3 && vakje5_state == 3 && vakje7_state == 3) {
-    play_button_opac = 255
-    endscreen_text =  "Red "
-    game_start = false;
-  }
-
-  if (vakje2_state == 3 && vakje5_state == 3 && vakje8_state == 3) {
-    play_button_opac = 255
-    endscreen_text =  "Red "
-    game_start = false;
-  }
-
-  if (vakje3_state == 3 && vakje6_state == 3 && vakje9_state == 3) {
-    play_button_opac = 255
-    endscreen_text =  "Red "
-    game_start = false;
-  }
-
-
-  if (vakje1_state == 4 && vakje2_state == 4 && vakje3_state == 4) {
-    play_button_opac = 255
-    endscreen_text =  "Blue "
-    game_start = false;
-  }
-
-  if (vakje4_state == 4 && vakje5_state == 4 && vakje6_state == 4) {
-    play_button_opac = 255
-    endscreen_text =  "Blue "
-    game_start = false;
-  }
-
-  if (vakje7_state == 4 && vakje8_state == 4 && vakje9_state == 4) {
-    play_button_opac = 255
-    endscreen_text =  "Blue "
-    game_start = false;
-  }
-
-  if (vakje1_state == 4 && vakje4_state == 4 && vakje7_state == 4) {
-    play_button_opac = 255
-    endscreen_text =  "Blue "
-    game_start = false;
-  }
-
-  if (vakje1_state == 4 && vakje5_state == 4 && vakje9_state == 4) {
-    play_button_opac = 255
-    endscreen_text =  "Blue "
-    game_start = false;
-  }
-
-  if (vakje3_state == 4 && vakje5_state == 4 && vakje7_state == 4) {
-    play_button_opac = 255
-    endscreen_text =  "Blue "
-    game_start = false;
-  }
-
-  if (vakje2_state == 4 && vakje5_state == 4 && vakje8_state == 4) {
-    play_button_opac = 255
-    endscreen_text =  "Blue "
-    game_start = false;
-  }
-
-  if (vakje3_state == 4 && vakje6_state == 4 && vakje9_state == 4) {
-    play_button_opac = 255
-    endscreen_text =  "Blue "
-    game_start = false;
-  }
-
-  if (vakje1_state !== 1 && vakje2_state !== 1 && vakje3_state !== 1 && vakje4_state !== 1 && vakje5_state !== 1 && vakje6_state !== 1 && vakje7_state !== 1 && vakje8_state !== 1 && vakje9_state !== 1 && vakje1_state !== 2 && vakje2_state !== 2 && vakje3_state !== 2 && vakje4_state !== 2 && vakje5_state !== 2 && vakje6_state !== 2 && vakje7_state !== 2 && vakje8_state !== 2 && vakje9_state !== 2 && game_start == true) {
-    play_button_opac = 255
-    endscreen_text = "Nobody "
-    game_start = false
-  }
-
 }
 
 function mouseClicked() {
