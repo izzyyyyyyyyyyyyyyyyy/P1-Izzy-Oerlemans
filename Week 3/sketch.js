@@ -21,6 +21,7 @@ let turn = 1;
 let play_button_opac = 0;
 let endscreen_text;
 let game_start = true;
+let offset = 0;
 
 
 function setup() {
@@ -160,7 +161,7 @@ function draw() {
 
   if (vakje3_state == 4 && vakje5_state == 4 && vakje7_state == 4) {
     play_button_opac = 255
-    line(710,210,710,610)
+    line(710,210,310,610)
     endscreen_text =  "Blue "
     game_start = false;
   }
@@ -182,6 +183,7 @@ function draw() {
     play_button_opac = 255
     endscreen_text = "Nobody "
     game_start = false
+    offset = 65
   }
 
 
@@ -196,7 +198,7 @@ function draw() {
   textSize(100)
   fill(255,play_button_opac)
   strokeWeight(10)
-  text(endscreen_text + "wins!",300,400)
+  text(endscreen_text + "wins!",300 - offset,400)
 
 
   if (turn > 2) {
