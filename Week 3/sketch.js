@@ -47,7 +47,6 @@ function draw() {
   background(background_color);
   fill(0)
   strokeWeight(0)
-  
   square(200,100,620,40)
   fill(vakje1)
   square(220,120,180)
@@ -67,6 +66,10 @@ function draw() {
   square(420,520,180)
   fill(vakje9)
   square(620,520,180)
+  textSize(75)
+  stroke(0)
+  strokeWeight(5)
+  text("Drie op een rij!",260,70)
 
   //endscreen
   strokeWeight(25)
