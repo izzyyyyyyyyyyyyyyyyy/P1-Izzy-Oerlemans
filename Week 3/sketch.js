@@ -20,7 +20,7 @@ let background_color;
 let turn = 1;
 let play_button_opac = 0;
 let endscreen_text;
-let game_start = 3;
+let menu_state = 3;
 let offset = 0;
 let from;
 let to;
@@ -90,7 +90,7 @@ function draw() {
     bg_music.play()
   }
 
-  if (game_start == 3) {
+  if (menu_state == 3) {
     opac1 = 255
     opac2 = 0
     play_button_opac = 0
@@ -105,7 +105,7 @@ function draw() {
     vakje9 = color(255,opac2);
   }
 
-  if (game_start == 2) {
+  if (menu_state == 2) {
     opac1 = 0
     opac2 = 255
     play_button_opac = 0
@@ -123,7 +123,7 @@ function draw() {
     p2_color6_stroke = color(0,0)
   }
 
-  if (game_start == 1) {
+  if (menu_state == 1) {
     opac1 = 0
     opac2 = 255
     play_button_opac = 255
@@ -249,7 +249,7 @@ function draw() {
     background_transition = 0
   }
   
-  if (game_start == 2) {
+  if (menu_state == 2) {
     if (turn == 1) {
       background_transition -= 0.1
     } else {
@@ -261,7 +261,7 @@ function draw() {
 
   //vakje 1
   //code om het vakje grijs te maken wanneer de muis er over heen zit
-  if (game_start == 2) {
+  if (menu_state == 2) {
     if (mouseX >= 220 && mouseX <= 400 && mouseY >= 120 && mouseY <= 300) {
       if (vakje1_state == 1) {
         vakje1_state = 2
@@ -503,51 +503,51 @@ function draw() {
   if (vakje1_state == 3 && vakje2_state == 3 && vakje3_state == 3) {
     line(310,210,710,210)
     endscreen_text =  "P1  "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje4_state == 3 && vakje5_state == 3 && vakje6_state == 3) {
     line(310,410,710,410)
     endscreen_text =  "P1 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje7_state == 3 && vakje8_state == 3 && vakje9_state == 3) {
     line(310,610,710,610)
     endscreen_text =  "P1 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje1_state == 3 && vakje4_state == 3 && vakje7_state == 3) {
     line(310,210,310,610)
     endscreen_text =  "P1 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje1_state == 3 && vakje5_state == 3 && vakje9_state == 3) {
     line(310,210,710,610)
     endscreen_text =  "P1 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje3_state == 3 && vakje5_state == 3 && vakje7_state == 3) {
     line(710,210,310,610)
     endscreen_text =  "P1 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje2_state == 3 && vakje5_state == 3 && vakje8_state == 3) {
 
     line(510,210,510,610)
     endscreen_text =  "P1 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje3_state == 3 && vakje6_state == 3 && vakje9_state == 3) {
 
     line(710,210,710,610)
     endscreen_text =  "P1 "
-    game_start = 1;
+    menu_state = 1;
   }
 
 
@@ -555,63 +555,63 @@ function draw() {
 
     line(310,210,710,210)
     endscreen_text =  "P2 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje4_state == 4 && vakje5_state == 4 && vakje6_state == 4) {
 
     line(310,410,710,410)
     endscreen_text =  "P2 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje7_state == 4 && vakje8_state == 4 && vakje9_state == 4) {
 
     line(310,610,710,610)
     endscreen_text =  "P2 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje1_state == 4 && vakje4_state == 4 && vakje7_state == 4) {
 
     line(310,210,310,610)
     endscreen_text =  "P2 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje1_state == 4 && vakje5_state == 4 && vakje9_state == 4) {
 
     line(310,210,710,610)
     endscreen_text =  "P2 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje3_state == 4 && vakje5_state == 4 && vakje7_state == 4) {
 
     line(710,210,310,610)
     endscreen_text =  "P2 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje2_state == 4 && vakje5_state == 4 && vakje8_state == 4) {
 
     endscreen_text =  "P2 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   if (vakje3_state == 4 && vakje6_state == 4 && vakje9_state == 4) {
 
     line(510,210,510,610)
     endscreen_text =  "P2 "
-    game_start = 1;
+    menu_state = 1;
   }
 
   //als alle vakje gevult zijn en er geen drie op een rij gedetecteerd word is het gelijk spel
-  if (vakje1_state !== 1 && vakje2_state !== 1 && vakje3_state !== 1 && vakje4_state !== 1 && vakje5_state !== 1 && vakje6_state !== 1 && vakje7_state !== 1 && vakje8_state !== 1 && vakje9_state !== 1 && vakje1_state !== 2 && vakje2_state !== 2 && vakje3_state !== 2 && vakje4_state !== 2 && vakje5_state !== 2 && vakje6_state !== 2 && vakje7_state !== 2 && vakje8_state !== 2 && vakje9_state !== 2 && game_start == 2) {
+  if (vakje1_state !== 1 && vakje2_state !== 1 && vakje3_state !== 1 && vakje4_state !== 1 && vakje5_state !== 1 && vakje6_state !== 1 && vakje7_state !== 1 && vakje8_state !== 1 && vakje9_state !== 1 && vakje1_state !== 2 && vakje2_state !== 2 && vakje3_state !== 2 && vakje4_state !== 2 && vakje5_state !== 2 && vakje6_state !== 2 && vakje7_state !== 2 && vakje8_state !== 2 && vakje9_state !== 2 && menu_state == 2) {
     play_button_opac = 255
     endscreen_text = "Nobody "
     offset = 65
-    game_start = 1
+    menu_state = 1
   }
 
   //endscreen viuals
@@ -633,7 +633,7 @@ function draw() {
 //muis input voor de verandering van de kleur
 function mouseClicked() {
 
-  if (game_start == 2) { //<-- zorgt ervoor dat de game niet meer werkt als de endscreen er is
+  if (menu_state == 2) { //<-- zorgt ervoor dat de game niet meer werkt als de endscreen er is
     if (mouseButton === LEFT) {
 
       //vakje 1
@@ -782,11 +782,11 @@ function mouseClicked() {
     }
   }
 
-  if (game_start == 3) {
+  if (menu_state == 3) {
     if (mouseButton === LEFT) {
       if (mouseX >= 310 && mouseX <= 710 && mouseY >= 600 && mouseY <= 700) {
         click_sound.play()
-        game_start = 2
+        menu_state = 2
       }
 
       if (mouseX >= 10 && mouseX <= 110 && mouseY >= 200 && mouseY <= 300) {
@@ -924,7 +924,7 @@ function mouseClicked() {
   }
   
   //game reset
-  if (game_start == 1 && mouseX >= 360 && mouseX <= 660 && mouseY >= 500 && mouseY <= 650) {
+  if (menu_state == 1 && mouseX >= 360 && mouseX <= 660 && mouseY >= 500 && mouseY <= 650) {
     if (mouseButton === LEFT) {
       click_sound.play()
       p1_color = color(255,0,0)
@@ -951,7 +951,7 @@ function mouseClicked() {
       vakje7_state = 1
       vakje8_state = 1
       vakje9_state = 1
-      game_start = 3
+      menu_state = 3
     }
   }
 }
