@@ -79,6 +79,9 @@ function setup() {
   p2_color5_stroke = color(0)
   p2_color6_stroke = color(0)
   text_trans = 0;
+  for (let i = 5; i > 0; i--) {
+    console.log("Hello world!")
+  }
 }
 
 function draw() {
