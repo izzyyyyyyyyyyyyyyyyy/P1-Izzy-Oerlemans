@@ -95,6 +95,6 @@ function draw() {
   }
   //9. random getallen en hun gemiddelde
   for (g = 0; g < 12; g++) {
-    text(random_getallen[g],240,25)
+    text(random_getallen[g],240,25)s
   }
 }
