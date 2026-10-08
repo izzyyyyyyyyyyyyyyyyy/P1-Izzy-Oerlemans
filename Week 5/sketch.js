@@ -1,4 +1,20 @@
+let lives = 3;
 let slides = 0;
+let information = ["","CAT2009","troll-face","another-trollface","img-of-zebra","","picture-of-3-fish","twitter-logo","picture-of-road","","picture of guy with a gun"]
+let questions = [ "",
+  "how many letters does this have?",
+  "Pick the fourth Option.",
+   "pick the 'fourth' option",
+  "Is a zebra black on white, or white on black?",
+  `What is 120 / 23 + 15.260 - 214.5003
+  / π * (50% / 21.523%)? (rounded)`,
+  "How many fish are here right now?",
+  "Is twitter a reliable news source?",
+  `When crossing the road, you look...
+  (fill in the blank)`,
+  "Click the dot.",
+  `Is this project a 10/10?
+  (I'm watching you.)`]
 let answers = []
 answers[0] = ["", "", "", ""]
 answers[1] = ["7.", "4.", "seven.", "3."]
@@ -36,6 +52,7 @@ function setup() {
 
 function draw() {
   background(220)
+  
   if (results == 1) {
     background(0, 255, 0)
     startButtonID[0].mousePressed(nextSlide)
@@ -49,12 +66,20 @@ function draw() {
   }
   if (results == 2) {
     background(255,0,0)
-    startButtonID[0].mousePressed(restart)
-    startButtonID[0].html("RESTART")
+    if (lives == 1) {
+      startButtonID[0].mousePressed(restart)
+      startButtonID[0].html("RESTART")
+    }
+    if (lives > 1) {
+      startButtonID[0].mousePressed(subtractLivesNext)
+      startButtonID[0].html("retry")
+    }
     for (let i = 0; i < 4; i++) {
       buttonIDS_answers[i].hide()
       startButtonID[0].show()
     }
+    fill(0)
+    text("INCORRECT",10,100)
   }
 
   if (results == 0) {
@@ -64,6 +89,7 @@ function draw() {
   if (slides == 0) {
     textSize(75)
     if (results !== 1 && results !== 2) {
+      fill(0)
       text("Welcome to the impossible quiz.", 50, 100)
     }
     for (let i = 0; i < 4; i++) {
@@ -72,7 +98,24 @@ function draw() {
   }
 
   if (slides !== 0) {
+    textSize(50)
+    fill("orange")
+    stroke("white")
+    strokeWeight(7)
+    text("Lives: " + lives,10,200)
     if (results !== 1 && results !== 2) {
+      fill(0,0,0,0)
+      stroke(0)
+      strokeWeight(10)
+      rect(240,130,800,300)
+      fill(255,0,0)
+      textSize(90)
+      stroke(255)
+      strokeWeight(6)
+      text(information[slides],400,300)
+      textSize(60)
+      fill("black")
+      text(questions[slides],10,100)
       startButtonID[0].hide()
       for (let i = 0; i < 4; i++) {
         buttonIDS_answers[i].show()
@@ -122,4 +165,13 @@ function wrongAnswer () {
 function restart() {
   slides = 0
   results = 0
+}
+
+function subtractLivesNext() {
+  lives -= 1
+  results = 0
+}
+
+function subtractLives() {
+  lives -= 1
 }
