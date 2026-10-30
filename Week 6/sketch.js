@@ -16,7 +16,7 @@ let heldItem = 0;
 let petX = 320
 let petY = 350
 let petWidth = 300;
-let sounds = ["balatro-main", "buy-sound", "click-sound", "chomp", "no-money", "coins-drop", "awh", "+point", "you-lose", "hit-the-jackpot"]
+let sounds = ["balatro-main", "buy-sound", "click-sound", "chomp", "no-money", "coins-drop", "awh", "+point", "you-lose", "hit-the-jackpot","drink"]
 let loadedSounds = []
 let game_state = 0;
 let deathCause = ["it starved", "it got too obese and its heart stopped", "it got so tired it entered a coma and died", "it got too depressed and commited suicide", "it got deathly ill and died"]
@@ -128,12 +128,12 @@ function preload() {
     let img = loadImage(images[i] + ".png")
     itemImages.push(img)
   }
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 11; i++) {
     let sound = loadSound(sounds[i] + ".mp3")
     console.log("loaded " + sounds[i])
     loadedSounds.push(sound)
   }
-
+}
 function draw() {
   storeItem("food",food)
   storeItem("energy",energy)
@@ -587,7 +587,7 @@ function previousScene() {
 function buyFoodItem() {
   if (money >= 120 && itemsOwned.length < 4) {
     itemsOwned.push(2)
-    money -= 20
+    money -= 120
     loadedSounds[1].play()
   } else {
     loadedSounds[4].play()
@@ -597,7 +597,7 @@ function buyFoodItem() {
 function buyMonsterEnergy() {
   if (money >= 150 && itemsOwned.length < 4) {
     itemsOwned.push(1)
-    money -= 30
+    money -= 150
     loadedSounds[1].play()
   } else {
     loadedSounds[4].play()
@@ -607,7 +607,7 @@ function buyMonsterEnergy() {
 function buyPills() {
   if (money >= 300 && itemsOwned.length < 4) {
     itemsOwned.push(0)
-    money -= 100
+    money -= 300
     loadedSounds[1].play()
   } else {
     loadedSounds[4].play()
@@ -635,6 +635,7 @@ function drink() {
   energy += 40
   itemsOwned.splice(item, 1)
   holdingItem = false
+  loadedSounds[10].play()
 }
 
 function meds() {
@@ -644,6 +645,7 @@ function meds() {
   health += 40
   itemsOwned.splice(item, 1)
   holdingItem = false
+  loadedSounds[3].play()
 }
 
 function retrySnake() {
@@ -687,6 +689,7 @@ function restart() {
   money = 0
   snakeScoreMult = 1
   snakeScore = 0
+  moneySoundMilestone = 0
 }
 
 function pickup() {
@@ -729,4 +732,4 @@ function keyPressed() {
     }  
   }
 }
-}
+
