@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 let images = ["shop", "living-room", "arcade", "bedroom", "pouy", "snake-background", "apple", "asteroid", "bedroom-sleep", "pou-sleep", "pills", "energy-drink", "spaghetti"]
 let loadedImages = []
 let itemImages = []
@@ -135,11 +133,6 @@ function preload() {
     console.log("loaded " + sounds[i])
     loadedSounds.push(sound)
   }
-=======
-function setup() {
-  createCanvas(400, 400);
->>>>>>> parent of 4c78500 (a)
-}
 
 function draw() {
   storeItem("food",food)
@@ -151,7 +144,7 @@ function draw() {
   storeItem("itemsOwned",itemsOwned)
   storeItem("moneySoundMilestone",moneySoundMilestone)
   background(220);
-<<<<<<< HEAD
+
   if (snakeScoreMult == 1) {
     if (money >= moneySoundMilestone + 30 && money > 0) {
       loadedSounds[5].play()
@@ -733,16 +726,7 @@ function keyPressed() {
     }
     if (keyCode === 39 || keyCode === 68) {
       snakeDirection = 3
-    }
+    }  
   }
-=======
->>>>>>> parent of 4c78500 (a)
-=======
-function setup() {
-  createCanvas(400, 400);
 }
-
-function draw() {
-  background(220);
->>>>>>> parent of 4c78500 (a)
 }
