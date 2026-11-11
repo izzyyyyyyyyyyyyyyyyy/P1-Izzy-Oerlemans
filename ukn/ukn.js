@@ -103,7 +103,7 @@ let rainbow = 0;
 let game_state = 0;
 let bg, bubbleShader;
 let buttons = []
-let images = ["Dylan", "Dylan-van-Marcus", "Mo", "cat", "barra", "mo-light", "ice-cream", "Dylano", "Dihlano", "pocky", "toad", "rico", "Izzy", "jumper-cat", "Kyo", "potentie", "callum", "thomas", "uncle-wang", "meno", "mo-light-shh", "broken-laptop", "barry", "gruncle", "clubstep", "ice-cream"]
+let images = ["Dylan", "Dylan-van-Marcus", "Mo", "cat", "barra", "mo-light", "ice-cream", "Dylano", "Dihlano", "pocky", "toad", "rico", "Izzy", "jumper-cat", "Kyo", "potentie", "callum", "thomas", "uncle-wang", "meno", "mo-light-shh", "broken-laptop", "barry", "gruncle", "clubstep", "ice-cream","office"]
 let loadedImages = []
 let aiLevels = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 let pointValue = 0;
@@ -152,7 +152,7 @@ function setup() {
 }
 
 function preload() {
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 26; i++) {
         let img = loadImage(images[i] + ".png")
         loadedImages.push(img)
     }
