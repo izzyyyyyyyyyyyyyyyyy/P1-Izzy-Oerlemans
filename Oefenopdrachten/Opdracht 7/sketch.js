@@ -1,32 +1,49 @@
+let coors = [
+  0b111110100,
+  0b100101100,
+  0b10010110,
+  0b1010001010,
+  0b111000010,
+  0b101011110,
+  0b11001000,
+  0b1100100000,
+  0b101000101,
+  0b1000001101,
+  0b1111000,
+  0b1001011000,
+  0b110010
+];
+
+let CORRECTOR = 1000;
+
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(1000, 700);
 }
 
 function draw() {
-  background(255);
-  let pixels = []
-  pixels[0] = [color(255),color(255),color(255),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255),color(255),color(255),color(255)]
-  pixels[1] = [color(255),color(255),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255)]
-  pixels[2] = [color(255),color(255),color(150,65,57),color(150,65,57),color(150,65,57),color(255,200,159),color(255,200,159),color(255,200,159),color(0),color(255),color(255),color(255),color(255)]
-  pixels[3] = [color(255),color(150,65,57),color(255,200,159),color(150,65,57),color(255,200,159),color(255,200,159),color(255,200,159),color(255,200,159),color(0),color(255,200,159),color(255,200,159),color(255,200,159),color(255)]
-  pixels[4] = [color(255),color(150,65,57),color(255,200,159),color(150,65,57),color(150,65,57),color(255,200,159),color(255,200,159),color(255,200,159),color(255,200,159),color(0),color(255,200,159),color(255,200,159),color(255,200,159)]
-  pixels[5] = [color(255),color(150,65,57),color(150,65,57),color(255,200,159),color(255,200,159),color(255,200,159),color(255,200,159),color(255,200,159),color(0),color(0),color(0),color(0),color(255)]
-  pixels[6] = [color(255),color(255),color(255),color(255,200,159),color(255,200,159),color(255,200,159),color(255,200,159),color(255,200,159),color(255,200,159),color(255,200,159),color(255,200,159),color(255),color(255)]
-  pixels[7] = [color(255),color(255),color(255,0,0),color(255,0,0),color(0,0,255),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255),color(255),color(255),color(255)]
-  pixels[8] = [color(255),color(255,0,0),color(255,0,0),color(255,0,0),color(0,0,255),color(255,0,0),color(255,0,0),color(0,0,255),color(255,0,0),color(255,0,0),color(255,0,0),color(255),color(255)]
-  pixels[9] = [color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(0,0,255),color(0,0,255),color(0,0,255),color(0,0,255),color(255,0,0),color(255,0,0),color(255,0,0),color(255,0,0),color(255)]
-  pixels[10] = [color(255,200,159),color(255,200,159),color(255,0,0),color(0,0,255),color(255,255,0),color(0,0,255),color(0,0,255),color(255,255,0),color(0,0,255),color(255,0,0),color(255,200,159),color(255,200,159),color(255)]
-  pixels[11] = [color(255,200,159),color(255,200,159),color(255,200,159),color(0,0,255),color(0,0,255),color(0,0,255),color(0,0,255),color(0,0,255),color(0,0,255),color(255,200,159),color(255,200,159),color(255,200,159),color(255)]
-  pixels[12] = [color(255,200,159),color(255,200,159),color(0,0,255),color(0,0,255),color(0,0,255),color(0,0,255),color(0,0,255),color(0,0,255),color(0,0,255),color(0,0,255),color(255,200,159),color(255,200,159),color(255)]
-  pixels[13] = [color(255),color(255),color(0,0,255),color(0,0,255),color(0,0,255),color(255),color(255),color(0,0,255),color(0,0,255),color(0,0,255),color(255),color(255),color(255)]
-  pixels[14] = [color(255),color(150,65,57),color(150,65,57),color(150,65,57),color(255),color(255),color(255),color(255),color(150,65,57),color(150,65,57),color(150,65,57),color(255),color(255)]
-  pixels[15] = [color(150,65,57),color(150,65,57),color(150,65,57),color(150,65,57),color(255),color(255),color(255),color(255),color(150,65,57),color(150,65,57),color(150,65,57),color(150,65,57),color(255)]
-  strokeWeight(0)
-  for (i = 0; i < 13; i++) {
-    for (j = 0; j < 16; j++) {
-      fill(pixels[j][i]);
-      square(i * 10 + 10, j * 10 + 10,10);
-    }
+  background(250);
+  
+  // Style for the shapes/points
+  fill("white");
+  stroke(0);
+  strokeWeight(2);
+  
+  // Loop through the flat array 2 elements at a time (X and Y pairs)
+  // We use coors.length - 1 to ensure we have a valid pair to read
+  for (let i = 0; i < coors.length - 1; i += 2) {
+    // 1. Get the raw normalized values (0 to 1000)
+    let rawX = coors[i];
+    let rawY = coors[i + 1];
+    
+    // 2. Modulate by CORRECTOR to get a 0.0 - 1.0 ratio
+    let ratioX = rawX / CORRECTOR;
+    let ratioY = rawY / CORRECTOR;
+    
+    // 3. Scale up to the actual canvas width (1000) and height (700)
+    let posX = ratioX * width;
+    let posY = ratioY * height;
+    
+    // 4. Draw your coordinates (e.g., as circles)
+    ellipse(posX, posY, 20, 20);
   }
-
 }

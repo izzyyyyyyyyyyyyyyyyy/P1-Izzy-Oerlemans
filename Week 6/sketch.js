@@ -2,7 +2,7 @@ let images = ["shop", "living-room", "arcade", "bedroom", "pouy", "snake-backgro
 let loadedImages = []
 let itemImages = []
 let item = 0;
-let buttons = []
+let AiButtons = []
 let imageCount = 0;
 let rainbow = 0;
 let food = 200;
@@ -16,7 +16,7 @@ let heldItem = 0;
 let petX = 320
 let petY = 350
 let petWidth = 300;
-let sounds = ["balatro-main", "buy-sound", "click-sound", "chomp", "no-money", "coins-drop", "awh", "+point", "you-lose", "hit-the-jackpot","drink"]
+let sounds = ["balatro-main", "buy-sound", "click-sound", "chomp", "no-money", "coins-drop", "awh", "+point", "you-lose", "hit-the-jackpot", "drink"]
 let loadedSounds = []
 let game_state = 0;
 let deathCause = ["it starved", "it got too obese and its heart stopped", "it got so tired it entered a coma and died", "it got too depressed and commited suicide", "it got deathly ill and died"]
@@ -48,7 +48,7 @@ function setup() {
     button.position(10, 10)
     button.size(45, 715)
     button.style("font-size", "35px")
-    buttons.push(button)
+    AiButtons.push(button)
   }
   for (let i = 0; i < 10; i++) {
     snakeApplePosX.push(round(random(200, 620)))
@@ -64,50 +64,50 @@ function setup() {
   loadedSounds[7].setVolume(0.15)
   loadedSounds[9].setVolume(0.3)
   loadedSounds[5].setVolume(0.5)
-  if (getItem("food")==null) {
+  if (getItem("food") == null) {
     food = 200;
   }
   else {
     food = getItem("food");
   }
-  if (getItem("happyness")==null) {
+  if (getItem("happyness") == null) {
     happyness = 200;
   }
   else {
     happyness = getItem("happyness");
   }
-  if (getItem("energy")==null) {
+  if (getItem("energy") == null) {
     energy = 200;
   }
   else {
     energy = getItem("energy");
   }
-  if (getItem("health")==null) {
+  if (getItem("health") == null) {
     health = 200;
   }
   else {
     health = getItem("health");
   }
-  if (getItem("money")==null) {
+  if (getItem("money") == null) {
     money = 0;
   }
   else {
     money = getItem("money");
   }
-  if (getItem("petWidth")==null) {
+  if (getItem("petWidth") == null) {
     petWidth = 300;
   }
   else {
     petWidth = getItem("petWidth");
   }
-  if (getItem("itemsOwned")==null) {
+  if (getItem("itemsOwned") == null) {
     itemsOwned = [];
   }
   else {
     itemsOwned = getItem("itemsOwned");
   }
-  if (getItem("moneySoundMilestone")==null) {
-   moneySoundMilestone = [];
+  if (getItem("moneySoundMilestone") == null) {
+    moneySoundMilestone = [];
   }
   else {
     moneySoundMilestone = getItem("moneySoundMilestone");
@@ -124,7 +124,6 @@ function preload() {
     loadedImages.push(img)
   }
   for (let i = 10; i < 13; i++) {
-    console.log(images[i])
     let img = loadImage(images[i] + ".png")
     itemImages.push(img)
   }
@@ -135,14 +134,14 @@ function preload() {
   }
 }
 function draw() {
-  storeItem("food",food)
-  storeItem("energy",energy)
-  storeItem("happyness",happyness)
-  storeItem("money",money)
-  storeItem("health",health)
-  storeItem("petWidth",petWidth)
-  storeItem("itemsOwned",itemsOwned)
-  storeItem("moneySoundMilestone",moneySoundMilestone)
+  storeItem("food", food)
+  storeItem("energy", energy)
+  storeItem("happyness", happyness)
+  storeItem("money", money)
+  storeItem("health", health)
+  storeItem("petWidth", petWidth)
+  storeItem("itemsOwned", itemsOwned)
+  storeItem("moneySoundMilestone", moneySoundMilestone)
   background(220);
 
   if (snakeScoreMult == 1) {
@@ -224,61 +223,61 @@ function draw() {
       loadedSounds[0].loop(); // restarts automatically when it ends
     }
     if (imageCount == 1) {
-      buttons[7].show()
+      AiButtons[7].show()
       if (watching == true) {
         vid.show()
       } else if (watching == false) {
         vid.hide()
       }
     } else {
-      buttons[7].hide()
+      AiButtons[7].hide()
       vid.hide()
     }
-    buttons[0].show()
-    buttons[1].show()
-    buttons[1].position(1240, 10)
-    buttons[1].html(">")
-    buttons[0].mousePressed(previousScene)
-    buttons[1].mousePressed(nextScene)
-    buttons[2].position(60, 660)
-    buttons[2].size(100, 50)
-    buttons[2].html("BUY")
-    buttons[2].mousePressed(buyFoodItem)
-    buttons[3].hide()
-    buttons[5].hide()
-    buttons[4].hide()
-    buttons[4].position(305, 370)
-    buttons[4].size(205, 100)
-    buttons[4].html("Retry")
-    buttons[4].mousePressed(retrySnake)
-    buttons[5].html("Snake Xtreme")
-    buttons[5].position(70, 50)
-    buttons[5].size(100, 100)
-    buttons[5].style("font-size", "20px")
-    buttons[7].html("watch tv")
-    buttons[7].size(100, 100)
-    buttons[7].position(540, 620)
-    buttons[8].position(200, 660)
-    buttons[8].size(100, 50)
-    buttons[8].html("BUY")
-    buttons[8].mousePressed(buyMonsterEnergy)
-    buttons[9].position(340, 660)
-    buttons[9].size(100, 50)
-    buttons[9].html("BUY")
-    buttons[9].mousePressed(buyPills)
+    AiButtons[0].show()
+    AiButtons[1].show()
+    AiButtons[1].position(1240, 10)
+    AiButtons[1].html(">")
+    AiButtons[0].mousePressed(previousScene)
+    AiButtons[1].mousePressed(nextScene)
+    AiButtons[2].position(60, 660)
+    AiButtons[2].size(100, 50)
+    AiButtons[2].html("BUY")
+    AiButtons[2].mousePressed(buyFoodItem)
+    AiButtons[3].hide()
+    AiButtons[5].hide()
+    AiButtons[4].hide()
+    AiButtons[4].position(305, 370)
+    AiButtons[4].size(205, 100)
+    AiButtons[4].html("Retry")
+    AiButtons[4].mousePressed(retrySnake)
+    AiButtons[5].html("Snake Xtreme")
+    AiButtons[5].position(70, 50)
+    AiButtons[5].size(100, 100)
+    AiButtons[5].style("font-size", "20px")
+    AiButtons[7].html("watch tv")
+    AiButtons[7].size(100, 100)
+    AiButtons[7].position(540, 620)
+    AiButtons[8].position(200, 660)
+    AiButtons[8].size(100, 50)
+    AiButtons[8].html("BUY")
+    AiButtons[8].mousePressed(buyMonsterEnergy)
+    AiButtons[9].position(340, 660)
+    AiButtons[9].size(100, 50)
+    AiButtons[9].html("BUY")
+    AiButtons[9].mousePressed(buyPills)
 
     if (watching == false) {
-      buttons[7].mousePressed(watch)
+      AiButtons[7].mousePressed(watch)
     } else if (watching == true) {
       loadedSounds[0].stop()
-      buttons[7].mousePressed(stopWatching)
+      AiButtons[7].mousePressed(stopWatching)
       if (frameCount % 50 === 0) {
         happyness = happyness + 5
         health = health - 0.5
       }
     }
 
-    if (!buttons[6].elt.matches(':active')) {
+    if (!AiButtons[6].elt.matches(':active')) {
       sleeping = false
       if (frameCount % 90 === 0) {
         energy -= 2
@@ -365,22 +364,22 @@ function draw() {
       stroke(0)
       strokeWeight(5)
       rect(0, 500, 640, 218)
-      image(itemImages[2],40,500,120,150)
-      fill(0,255,0)
+      image(itemImages[2], 40, 500, 120, 150)
+      fill(0, 255, 0)
       stroke(255)
       textSize(30)
-      text("120$",130,620)
-      image(itemImages[1],180,500,120,140)
-      text("150$",270,620)
-      image(itemImages[0],320,510,120,140)
-      text("300$",410,620)
-      buttons[2].show()
-      buttons[8].show()
-      buttons[9].show()
+      text("120$", 130, 620)
+      image(itemImages[1], 180, 500, 120, 140)
+      text("150$", 270, 620)
+      image(itemImages[0], 320, 510, 120, 140)
+      text("300$", 410, 620)
+      AiButtons[2].show()
+      AiButtons[8].show()
+      AiButtons[9].show()
     } else {
-      buttons[2].hide()
-      buttons[8].hide()
-      buttons[9].hide()
+      AiButtons[2].hide()
+      AiButtons[8].hide()
+      AiButtons[9].hide()
     }
 
     for (let i = 0; i < itemsOwned.length; i++) {
@@ -404,46 +403,46 @@ function draw() {
   if (game_state == 1) {
     background(0)
     loadedSounds[0].stop()
-    buttons[0].hide()
-    buttons[1].hide()
-    buttons[2].hide()
-    buttons[4].hide()
-    buttons[5].hide()
-    buttons[6].hide()
-    buttons[7].hide()
+    AiButtons[0].hide()
+    AiButtons[1].hide()
+    AiButtons[2].hide()
+    AiButtons[4].hide()
+    AiButtons[5].hide()
+    AiButtons[6].hide()
+    AiButtons[7].hide()
     textSize(50)
     fill("red")
     textAlign(CENTER, CENTER)
     text("your pet died", 640, 200)
     text(deathCause[deathCauseID], 640, 300)
-    buttons[3].show()
-    buttons[3].html("Retry")
-    buttons[3].position(440, 500)
-    buttons[3].size(400, 100)
-    buttons[3].mousePressed(restart)
-    buttons[8].hide()
-    buttons[9].hide()
+    AiButtons[3].show()
+    AiButtons[3].html("Retry")
+    AiButtons[3].position(440, 500)
+    AiButtons[3].size(400, 100)
+    AiButtons[3].mousePressed(restart)
+    AiButtons[8].hide()
+    AiButtons[9].hide()
   }
   if (imageCount == 3) {
-    buttons[6].show()
-    buttons[6].html("sleep")
-    buttons[6].position(440, 620)
-    buttons[6].size(200, 100)
+    AiButtons[6].show()
+    AiButtons[6].html("sleep")
+    AiButtons[6].position(440, 620)
+    AiButtons[6].size(200, 100)
     fill(0, darknessOpac)
     strokeWeight(0)
     rect(0, 0, 640, 1000)
-    if (buttons[6].elt.matches(':active')) {
+    if (AiButtons[6].elt.matches(':active')) {
       if (frameCount % 5 === 0) {
         energy++
       }
       darknessOpac = 120
     }
   } else {
-    buttons[6].hide()
+    AiButtons[6].hide()
   }
   if (imageCount == 2) {
-    buttons[5].show()
-    buttons[5].mousePressed(activateMinigameSnake)
+    AiButtons[5].show()
+    AiButtons[5].mousePressed(activateMinigameSnake)
     if (minigameActive == true) {
       if (frameCount % 20 === 0) {
         happyness++
@@ -546,8 +545,8 @@ function draw() {
         }
 
       } else if (snakeGameState == 1) {
-        buttons[4].show()
-        buttons[7].hide()
+        AiButtons[4].show()
+        AiButtons[7].hide()
         fill(0)
         strokeWeight(4)
         stroke(255)
@@ -729,7 +728,7 @@ function keyPressed() {
     }
     if (keyCode === 39 || keyCode === 68) {
       snakeDirection = 3
-    }  
+    }
   }
 }
 
