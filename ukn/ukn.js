@@ -103,7 +103,9 @@ let rainbow = 0;
 let game_state = 0;
 let bg, bubbleShader;
 let buttons = []
-let images = ["Dylan", "Dylan-van-Marcus", "Mo", "cat", "barra", "mo-light", "ice-cream", "Dylano", "Dihlano", "pocky", "toad", "rico", "Izzy", "jumper-cat", "Kyo", "potentie", "callum", "thomas", "uncle-wang", "meno", "mo-light-shh", "broken-laptop", "barry", "gruncle", "clubstep", "ice-cream","office"]
+let sounds = ["shot","reload","gun-ready"]
+let loadedSounds = []
+let images = ["Dylan", "Dylan-van-Marcus", "Mo", "cat", "barra", "mo-light", "ice-cream", "Dylano", "Dihlano", "pocky", "toad", "rico", "Izzy", "jumper-cat", "Kyo", "potentie", "callum", "thomas", "uncle-wang", "meno", "mo-light-shh", "broken-laptop", "barry", "gruncle", "clubstep", "ice-cream","office","gun","gun-icon"]
 let loadedImages = []
 let aiLevels = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 let pointValue = 0;
@@ -133,10 +135,23 @@ let charDescriptions = [
     "Barry - his stream will randomly appear on ur laptop, dislike it to make him go away",
     "gruncle - dont leave your fan on too long",
     "frieg monster - stalemate will get louder as he gets closer, you can see him in your vent radar. turn on the heater once he gets too close"
-
-
-
 ]
+let leftDoor = {
+    state: 0,
+    height: 114,
+    height2: 195
+}
+let rightDoor = {
+    state: 0,
+    height: 116,
+    height2: 195
+}
+let vent = {
+    state: 0,
+    height: 0,
+}
+let gunActive = false
+let gunBoxColor = 150
 
 function setup() {
     createCanvas(1280, 720);
@@ -144,7 +159,7 @@ function setup() {
     bg.pixelDensity(1);
     bg.noStroke();
     bubbleShader = bg.createShader(vert, frag);
-    for (let i = 0; i < 61; i++) {
+    for (let i = 0; i < 60; i++) {
         let button = createButton("+")
         button.size(60, 20)
         buttons.push(button)
@@ -152,9 +167,13 @@ function setup() {
 }
 
 function preload() {
-    for (let i = 0; i < 26; i++) {
+    for (let i = 0; i < 29; i++) {
         let img = loadImage(images[i] + ".png")
         loadedImages.push(img)
+    }
+    for (let i = 0; i < 3; i++) {
+        let sound = loadSound(sounds[i] + ".mp3")
+        loadedSounds.push(sound)
     }
 }
 
@@ -321,6 +340,134 @@ function draw() {
         background(200)
         for (let i = 0; i < 60; i++) {
             buttons[i].hide()
+        }
+        image(loadedImages[26],0,0,1280,720)
+        fill(255)
+        text(mouseX,mouseX,mouseY)
+        text(mouseY,mouseX,mouseY + 20)
+        strokeWeight(0)
+        fill(100)
+        quad(32,197,145,112,144,leftDoor.height,34,leftDoor.height2)
+        if (leftDoor.state == 1) {
+            leftDoor.height = leftDoor.height + 100
+            leftDoor.height2 = leftDoor.height2 + 100
+        }
+        if (leftDoor.height >= 563) {
+            leftDoor.height = 563
+        }
+        if (leftDoor.height2 >= 690 && leftDoor.state == 1) {
+            leftDoor.height2 = 690
+            leftDoor.state = 2
+        }
+        if (leftDoor.state == 3) {
+            leftDoor.height = leftDoor.height - 100
+            leftDoor.height2 = leftDoor.height2 - 100
+        }
+        if (leftDoor.height <= 114) {
+            leftDoor.height = 114
+        }
+        if (leftDoor.height2 <= 195 && leftDoor.state == 3) {
+            leftDoor.height2 = 195
+            leftDoor.state = 0
+        }
+
+        quad(1140,119,1246,195,1246,rightDoor.height2,1140,rightDoor.height)
+        if (rightDoor.state == 1) {
+            rightDoor.height = rightDoor.height + 100
+            rightDoor.height2 = rightDoor.height2 + 100
+        }
+        if (rightDoor.height >= 563) {
+            rightDoor.height = 563
+        }
+        if (rightDoor.height2 >= 690 && rightDoor.state == 1) {
+            rightDoor.height2 = 690
+            rightDoor.state = 2
+        }
+        if (rightDoor.state == 3) {
+            rightDoor.height = rightDoor.height - 100
+            rightDoor.height2 = rightDoor.height2 - 100
+        }
+        if (rightDoor.height <= 114) {
+            rightDoor.height = 114
+        }
+        if (rightDoor.height2 <= 195 && rightDoor.state == 3) {
+            rightDoor.height2 = 195
+            rightDoor.state = 0
+        }
+
+        rect(284,80,215,vent.height)
+        if (vent.state == 1) {
+            vent.height = vent.height + 60
+        }
+        if (vent.height >= 122 && vent.state == 1) {
+            vent.height = 122
+            vent.state = 2
+        }
+        if (vent.state == 3) {
+            vent.height = vent.height - 60
+        }
+        if (vent.height <= 0 && vent.state == 3) {
+            vent.height = 0
+            vent.state = 0
+        }
+
+        //gun
+        if (mouseX >= 1060 && mouseX <= 1260 && mouseY >= 440 && mouseY <= 640) {
+            gunBoxColor = 100
+        } else {
+            gunBoxColor = 150
+        }
+        fill(gunBoxColor,200)
+        stroke(gunBoxColor - 50,200)
+        strokeWeight(5)
+        square(1060,440,200)
+        image(loadedImages[28],1080,470,150,150)
+        if (gunActive == true) {
+            image(loadedImages[27],0,350,600,400)
+        }
+    }
+}
+
+function keyPressed() {
+    if (game_state == 1) {
+        if (keyCode === 65) {
+            if (leftDoor.state == 0) {
+                leftDoor.state = 1
+            } else if (leftDoor.state == 2) {
+                leftDoor.state = 3
+            }
+        }
+        if (keyCode === 68) {
+            if (rightDoor.state == 0) {
+                rightDoor.state = 1
+            } else if (rightDoor.state == 2) {
+                rightDoor.state = 3
+            }
+        }
+        if (keyCode === 87) {
+            if (vent.state == 0) {
+                vent.state = 1
+            } else if (vent.state == 2) {
+                vent.state = 3
+            }
+        }
+
+    }
+}
+
+function mousePressed() {
+    if (mouseButton === LEFT) {
+        if (mouseX >= 1060 && mouseX <= 1260 && mouseY >= 440 && mouseY <= 640) {
+            if (gunActive == true) {
+                gunActive = false
+                loadedSounds[1].play()
+            } else if (gunActive == false) {
+                gunActive = true
+                loadedSounds[2].play()
+            }
+        } else if (gunActive == true) {
+            loadedSounds[0].play()
+            gunActive = false
         }
     }
 }
